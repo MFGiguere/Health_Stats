@@ -1,0 +1,70 @@
+<!doctype html>
+
+<head>
+    <title>Données connectées | {% block title %}Accueil{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
+</head>
+
+<body class="breakpoint-md b--responsive">
+<div class="body-inner">
+
+<!--Navbar-->
+  <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-around mb-3" style="border-bottom: 2px solid black">
+    <a href="/" class="navbar-brand mr-0 font-weight-bold align-items-center" id="brand" style="white-space:initial;">Portail web · Données connectées</a> 
+    <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar1">
+        <ul class="navbar-nav mx-auto text-center" id="nav-items">
+          {% for cat in category %}
+            <li><a href="{{ url_for('display', cat=cat) }}">{{ cat }}</a></li>
+          {% endfor %}
+          <li><a href="{{ url_for('admin') }}">Settings</a></li>
+        </ul>
+        <ul class="nav navbar-nav flex-row justify-content-center flex-nowrap">
+          <li class="social-linkedin"><a href="https://www.linkedin.com/in/mfgiguere/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+          <li class="social-github"><a href="https://github.com/MFGiguere" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li class="social-facebook"><a href="https://www.researchgate.net/profile/Maxime-F-Giguere" target="_blank"><i class="fab fa-researchgate"></i></a></li>
+        </ul>
+    </div>
+  </nav>
+
+<!--Main content-->
+<section id="page-content" class="container">
+    {% block content %}
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-lg-6 px-0">
+        <h1 class="display-4">Page d'accueil générique</h1>
+        <p class="lead my-3">Paragraphe générique</p>
+      </div>
+    </div>
+    {% endblock %}
+</section>
+
+<!--Footer-->
+<footer class="navbar navbar-light navbar-expand-md bg-light justify-content-center" style=" z-index:-1; border-top: 2px solid black">
+  <a class="navbar-brand mr-0 font-weight-bold align-items-center" id="brand">©Copyright · rdumont & mfgiguere · 2024</a> 
+  <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse justify-content-end align-items-center w-100" id="collapsingNavbar2">
+    <ul class="nav navbar-nav flex-row justify-content-center flex-nowrap">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="mailto:m.f.giguere@outlook.com">Contact</a></li>
+        <li><a href="#" style="bottom: 26px; opacity: 1; z-index: 199;"><i class="fa fa-chevron-up"></i></a>
+      </ul>
+  </div>
+</footer>
+
+
+<!--Scripts-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6a9a82bffb.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='custom.js') }}" crossorigin="anonymous"></script>
+</body> 
